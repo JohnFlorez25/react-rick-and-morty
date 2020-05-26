@@ -13,9 +13,9 @@ class App extends Component {
   }
 
   _fetchData(){
-    axios.get('https://rickandmortyapi.com/api/character/')
+    axios.get('http://localhost:5000/characters')
       .then(res => {
-        const characters = res.data.results
+        const characters = res.data
         this.setState( {
           data : characters,
           loading: false
