@@ -12,7 +12,7 @@ class App extends Component {
     }
   }
 
-  componentDidMount(){
+  _fetchData(){
     axios.get('https://rickandmortyapi.com/api/character/')
       .then(res => {
         const characters = res.data.results
@@ -20,8 +20,21 @@ class App extends Component {
           data : characters,
           loading: false
         })
-        console.log(this.state.data);
+        //console.log(this.state.data);
       })
+  }
+
+  componentDidMount(){
+    this._fetchData()
+  }
+
+  componentDidUpdate(prevProps, prevState){
+
+    console.log("El estado previo "+prevState.data);
+    
+    console.log("El estado actual ")
+    console.log(this.state.data)
+
   }
 
   render(){
